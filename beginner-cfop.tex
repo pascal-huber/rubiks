@@ -1,176 +1,15 @@
 \documentclass[9pt,dvipsnames]{extarticle}
-\usepackage[a4paper, margin=1cm, landscape]{geometry}
-\usepackage{multicol}
-\usepackage{tikz}%% load tikz BEFORE rubikcube
-\usepackage{rubikcube}
-\usepackage{background}
-\usepackage{tabularx}
-\usepackage{enumitem}
-\usepackage{outlines}
-\usepackage{titlesec}
-\usepackage[T1]{fontenc}
-\usepackage{tikz,rubikcube,rubikrotation,rubikpatterns}
-\usepackage{xcolor}
-
-% set pdf attributes
-\usepackage[pdftex,
-pdftitle={Beginner CFOP Cheatsheet},
-pdfauthor={Pascal Huber},
-pdfkeywords={Rubik's Cube, Speedcube, Magic Cube, Puzzle Cube, Beginner, CFOP}
-]{hyperref}
-
-% Double Arrows
-\tikzset{
-  double arrow/.style args={#1 colored by #2 and #3}{
-    -stealth,line width=#1,#2, % first arrow
-    postaction={draw,-stealth,#3,line width=(#1)/3,
-                shorten <=(#1)/3,shorten >=2*(#1)/3}, % second arrow
-  },
-  double double arrow/.style args={#1 colored by #2 and #3}{
-    stealth-stealth,line width=#1,#2, % first arrow
-    postaction={draw,stealth-stealth,#3,line width=(#1)/3,
-                shorten <=(#1)/1.5,shorten >=2*(#1)/3}, % second arrow
-  }
-}
-
-% Margin notes
-\SetBgContents{\color{Gray}\footnotesize created by Pascal Huber}
-\SetBgScale{1}
-\SetBgColor{black}
-\SetBgAngle{0}
-\SetBgOpacity{1}
-\SetBgPosition{current page.north east}
-\SetBgVshift{-.5cm}
-\SetBgHshift{-2cm}
-
-% Cube colors
-\colorlet{X}{black!60}
-
-% section fontenc
-\titleformat*{\section}
-{\LARGE\bfseries\sffamily\centering\color{OliveGreen}}
-\titleformat{\subsection}
-{\Large\bfseries\sffamily\color{BrickRed}}
-{\thesection}{1em}{}[{\titlerule[0.8pt]}]
-\titleformat*{\subsubsection}
-{\large\bfseries\sffamily\color{BrickRed}}
-
-% section spacing
-% \titlespacing*{<command>}{<left>}{<before-sep>}{<after-sep>}
-\titlespacing*{\section}
-{0pt}{0pt}{0pt}
-\titlespacing*{\subsection}
-{0pt}{0pt}{0pt}
-\titlespacing*{\subsubsection}
-{0pt}{2pt}{0pt}
-
-% spacing and indentation
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{4pt}
-\renewcommand{\baselinestretch}{1}
-
-% custom sizes
-\newcommand{\cubesize}{1.6cm}
-\newcommand{\cubescale}{0.35}
-
-% outlines
-\setenumerate[2]{label=\alph*.}
-
-% Side by side picture and sequence
-\newcommand*{\sbscube}[2]{%
-  \begin{minipage}[t]{0.29\linewidth}
-    \vspace{0pt}
-    {#1}
-  \end{minipage}\hfill%
-  \begin{minipage}[t]{0.69\linewidth}
-    \vspace{0pt}
-    {#2}
-  \end{minipage}
-}
-\newcommand*{\sbsface}[2]{%
-  \begin{minipage}[t]{0.24\linewidth}
-    \vspace{0pt}
-    {#1}
-  \end{minipage}\hfill%
-  \begin{minipage}[t]{0.74\linewidth}
-    \vspace{0pt}
-    {#2}
-  \end{minipage}
-}
+\input{setup.tex}
 
 \begin{document}
 
-% Some additional Moves
-\newcommand{\rubikfont}{\fontsize{10}{12pt}\usefont{T1}{cmss}{sbx}{n}}
-\newcommand{\RubikRR}{%
-  {\rubikfont%
-    \begin{minipage}{0.6cm}
-      \centering%
-      \SquareR\\
-      \rrR\textbf{2}%
-    \end{minipage}%%
-  }}
-\newcommand{\RubikUU}{%
-  {\rubikfont%
-    \begin{minipage}{0.6cm}
-      \centering%
-      \SquareU\\
-      \rrU\textbf{2}%
-    \end{minipage}%%
-  }}
-\newcommand{\RubikMM}{%
-  {\rubikfont%
-    \begin{minipage}{0.6cm}
-      \centering%
-      \SquareM\\
-      \rrM\textbf{2}%
-    \end{minipage}%%
-  }}
-
-% x move
-\newcommand{\Rubikxx}{%
-  {\rubikfont%
-    \begin{minipage}{0.6cm}
-      \centering%
-      \SquareM\\
-      \rrM\textbf{2}%
-    \end{minipage}%%
-  }}
-
-% Rubik empty Sequence
-\newcommand{\RubikEmpty}{%
-{\rubikfont%
-\begin{minipage}{0.6cm}
-  \phantom{
-    \SquareM\\
-    \rrM%
-  }
-\end{minipage}%
-}}
-
-% Rubik Sequences for brackets and repetitions
-\newcommand{\RubikBO}{%
-{\rubikfont%
-\begin{minipage}{0.25cm}
-\centering%
-\textbf{\Large(}%
-\end{minipage}%
-}}
-\newcommand{\RubikBCthree}{%
-{\rubikfont%
-\begin{minipage}{0.5cm}
-\centering%
-\textbf{\Large)3}%
-\end{minipage}%
-}}
-
-
+% Load custom rubik commands
+\input{rubikcustomizations.tex}
 
 % Sidebar dimensions
 \RubikSidebarSep{0.2}
 \RubikSidebarWidth{.6}
 \RubikSidebarLength{.8}
-
 
 \begin{multicols*}{4}
 \section*{Beginner CFOP Cheatsheet}
@@ -226,8 +65,8 @@ sure they are in a correct position for one of the insertion algorithms.
 
 \subsubsection*{Pair to Top Layer}
 
-Choose a corner and move it to the top layer together with its edge (without
-messing up the white cross or already solved corners).
+Choose a corner and move it to the top layer together with its edge without
+messing up the white cross or already solved corners.
 
 If the two pieces are next to each other but in a messed up way, split them up
 first as in the following example. Make sure to not break an already solved
@@ -300,8 +139,8 @@ them next to each other.
 {X}{X}{X}%
 \ShowCube{\cubesize}{\cubescale}{\DrawRubikCubeRU}
 
-Otherwise we want the edge to be opposite in the layer parallel to the
-white face of the corner piece.
+Otherwise we want the edge to be on the opposite side, in the layer parallel to
+the white face of the corner.
 
 \RubikFaceUp
 {X}{G}{X}
@@ -369,6 +208,8 @@ the corner above it and turn back the side.
 
 \subsubsection*{Inserting Algorithms}
 
+It should now be possible to use one of the algorithms to finish the corner.
+
 % Algorithm 1
 \noindent%
 \RubikFaceUp
@@ -378,11 +219,11 @@ the corner above it and turn back the side.
 \RubikFaceRight
 {X}{X}{X}
 {X}{O}{X}
-{X}{X}{X}%
+{X}{O}{X}%
 \RubikFaceFront
 {O}{O}{X}
 {X}{G}{X}
-{X}{X}{X}%
+{X}{G}{X}%
 \ShowCube{\cubesize}{\cubescale}{\DrawRubikCube}%
 \ShowSequence{}{\Rubik}{R,Up,Rp}%
 \RubikFaceUp
@@ -392,11 +233,11 @@ the corner above it and turn back the side.
 \RubikFaceRight
 {X}{X}{X}
 {O}{O}{X}
-{O}{X}{X}%
+{O}{O}{X}%
 \RubikFaceFront
 {X}{X}{X}
 {X}{G}{G}
-{X}{X}{G}%
+{X}{G}{G}%
 \ShowCube{\cubesize}{\cubescale}{\DrawRubikCubeRU}
 
 % Algorithm 2
@@ -408,11 +249,11 @@ the corner above it and turn back the side.
 \RubikFaceLeft
 {X}{X}{X}
 {X}{O}{X}
-{X}{X}{X}%
+{X}{O}{X}%
 \RubikFaceFront
 {X}{O}{O}
 {X}{G}{X}
-{X}{X}{X}%
+{X}{G}{X}%
 \ShowCube{\cubesize}{\cubescale}{\DrawRubikCubeLU}%
 \ShowSequence{}{\Rubik}{Lp,U,L}%
 \RubikFaceUp
@@ -422,11 +263,11 @@ the corner above it and turn back the side.
 \RubikFaceLeft
 {X}{X}{X}
 {X}{O}{O}
-{X}{X}{O}%
+{X}{O}{O}%
 \RubikFaceFront
 {X}{X}{X}
 {G}{G}{X}
-{G}{X}{X}%
+{G}{G}{X}%
 \ShowCube{\cubesize}{\cubescale}{\DrawRubikCubeLU}
 
 % Algorithm 3
@@ -442,11 +283,11 @@ the corner above it and turn back the side.
 \RubikFaceRight
 {W}{X}{X}
 {X}{O}{X}
-{X}{X}{X}%
+{X}{O}{X}%
 \RubikFaceFront
 {X}{X}{G}
 {X}{G}{X}
-{X}{X}{X}%
+{X}{G}{X}%
 \ShowCube{\cubesize}{\cubescale}{
   \NoSidebar{X}%
   \DrawRubikCube%
@@ -460,11 +301,11 @@ the corner above it and turn back the side.
 \RubikFaceRight
 {X}{X}{X}
 {O}{O}{X}
-{O}{X}{X}%
+{O}{O}{X}%
 \RubikFaceFront
 {X}{X}{X}
 {X}{G}{G}
-{X}{X}{G}%
+{X}{G}{G}%
 \ShowCube{\cubesize}{\cubescale}{\DrawRubikCubeRU}
 
 % Algorithm 4
@@ -480,11 +321,11 @@ the corner above it and turn back the side.
 \RubikFaceLeft
 {X}{X}{W}
 {X}{G}{X}
-{X}{X}{X}%
+{X}{G}{X}%
 \RubikFaceFront
 {O}{X}{X}
 {X}{O}{X}
-{X}{X}{X}%
+{X}{O}{X}%
 \ShowCube{\cubesize}{\cubescale}{
   \NoSidebar{X}%
   \DrawRubikCubeLU
@@ -498,11 +339,11 @@ the corner above it and turn back the side.
 \RubikFaceLeft
 {X}{X}{X}
 {X}{G}{G}
-{X}{X}{G}%
+{X}{G}{G}%
 \RubikFaceFront
 {X}{X}{X}
 {O}{O}{X}
-{O}{X}{X}%
+{O}{O}{X}%
 \ShowCube{\cubesize}{\cubescale}{\DrawRubikCubeLU}%
 
 \subsection*{2-look OLL}
@@ -559,8 +400,11 @@ $\rightarrow$%
 {X}{X}{X}
 {X}{Y}{X}
 {X}{X}{X}%
-\ShowCube{\cubesize}{\cubescale}{\DrawRubikFaceUp}%
-\ShowSequence{}{\Rubik}{F,R,U,Rp,Up,Fp}
+\sbsface{
+  \ShowCube{\cubesize}{\cubescale}{\DrawRubikFaceUp}
+}{
+  \ShowSequence{}{\Rubik}{F,R,U,Rp,Up,Fp}
+}
 
 \RubikCubeGreyAll
 \noindent
@@ -568,8 +412,11 @@ $\rightarrow$%
 {X}{X}{X}
 {X}{Y}{Y}
 {X}{Y}{X}%
-\ShowCube{\cubesize}{\cubescale}{\DrawRubikFaceUp}%
-\ShowSequence{}{\Rubik}{Fw,R,U,Rp,Up,Fwp}
+\sbsface{
+  \ShowCube{\cubesize}{\cubescale}{\DrawRubikFaceUp}%
+}{
+  \ShowSequence{}{\Rubik}{Fw,R,U,Rp,Up,Fwp}
+}
 
 \RubikCubeGreyAll
 \noindent
@@ -577,8 +424,72 @@ $\rightarrow$%
 {X}{X}{X}
 {Y}{Y}{Y}
 {X}{X}{X}%
-\ShowCube{\cubesize}{\cubescale}{\DrawRubikFaceUp}%
-\ShowSequence{}{\Rubik}{F,R,U,Rp,Up,Fp}
+\sbsface{
+  \ShowCube{\cubesize}{\cubescale}{\DrawRubikFaceUp}%
+}{
+  \ShowSequence{}{\Rubik}{F,R,U,Rp,Up,Fp}
+}
+
+\subsubsection*{Corners - No matching Corners}
+
+\noindent
+\RubikFaceBack
+{Y}{X}{Y}
+{X}{X}{X}
+{X}{X}{X}%
+\RubikFaceUp
+{X}{Y}{X}
+{Y}{Y}{Y}
+{X}{Y}{X}%
+\RubikFaceFront
+{Y}{X}{Y}
+{X}{X}{X}
+{X}{X}{X}%
+\sbscube{
+  \ShowCube{\cubesize}{\cubescale}{
+    \DrawRubikFaceUpSide%
+  }
+}{
+  % \RubikRotation{[threeF], F}%
+  \ShowSequence{}{\Rubik}{F}%
+  \RubikBO%
+  \ShowSequence{}{\Rubik}{R,U,Rp,Up}%
+  \RubikBC{3}%
+  \ShowSequence{}{\Rubik}{Fp}%
+}
+
+
+\RubikCubeGreyAll%
+\RubikFaceBack%
+{Y}{X}{X}
+{X}{X}{X}
+{X}{X}{X}
+\RubikFaceLeft%
+{Y}{X}{Y}
+{X}{X}{X}
+{X}{X}{X}
+\RubikFaceUp%
+{X}{Y}{X}
+{Y}{Y}{Y}
+{X}{Y}{X}
+\RubikFaceFront%
+{X}{X}{Y}
+{X}{X}{X}
+{X}{X}{X}
+\sbscube{
+  \ShowCube{\cubesize}{\cubescale}{
+    \DrawRubikFaceUpSide%
+  }
+}{
+  \ShowSequence{}{\Rubik}{R}%
+  \RubikUU\RubikRR%
+  \ShowSequence{}{\Rubik}{Up}%
+  \RubikRR\sequencebreak%
+  \RubikEmpty%
+  \ShowSequence{}{\Rubik}{Up}%
+  \RubikRR\RubikUU%
+  \ShowSequence{}{\Rubik}{R}
+}
 
 \subsubsection*{Corners - One matching Corner}
 
@@ -622,69 +533,7 @@ $\rightarrow$%
   \ShowSequence{}{\Rubik}{L}
 }
 
-\subsubsection*{Corners - No matching Corners}
-
-\noindent
-\RubikFaceBack
-{Y}{X}{Y}
-{X}{X}{X}
-{X}{X}{X}%
-\RubikFaceUp
-{X}{Y}{X}
-{Y}{Y}{Y}
-{X}{Y}{X}%
-\RubikFaceFront
-{Y}{X}{Y}
-{X}{X}{X}
-{X}{X}{X}%
-\sbscube{
-  \ShowCube{\cubesize}{\cubescale}{
-    \DrawRubikFaceUpSide%
-  }
-}{
-  % \RubikRotation{[threeF], F}%
-  \ShowSequence{}{\Rubik}{F}%
-  \RubikBO%
-  \ShowSequence{}{\Rubik}{R,U,Rp,Up}%
-  \RubikBCthree%
-  \ShowSequence{}{\Rubik}{Fp}%
-}
-
-
-\RubikCubeGreyAll%
-\RubikFaceBack%
-{Y}{X}{X}
-{X}{X}{X}
-{X}{X}{X}
-\RubikFaceLeft%
-{Y}{X}{Y}
-{X}{X}{X}
-{X}{X}{X}
-\RubikFaceUp%
-{X}{Y}{X}
-{Y}{Y}{Y}
-{X}{Y}{X}
-\RubikFaceFront%
-{X}{X}{Y}
-{X}{X}{X}
-{X}{X}{X}
-\sbscube{
-  \ShowCube{\cubesize}{\cubescale}{
-    \DrawRubikFaceUpSide%
-  }
-}{
-  \ShowSequence{}{\Rubik}{R}%
-  \RubikUU\RubikRR%
-  \ShowSequence{}{\Rubik}{Up}\\[.2cm]
-  \RubikRR%
-  \ShowSequence{}{\Rubik}{Up}%
-  \RubikRR\RubikUU%
-  \ShowSequence{}{\Rubik}{R}
-}
-
-
 \subsubsection*{Corners - Two matching Corners}
-
 
 \RubikCubeGreyAll%
 \RubikFaceRight%
@@ -704,7 +553,9 @@ $\rightarrow$%
     \DrawRubikFaceUpSide%
   }
 }{
-  \ShowSequence{}{\Rubik}{x,Rp,U,R,Dp}\\[.2cm]
+  \Rubikxx%
+  \ShowSequence{}{\Rubik}{Rp,U,R,Dp}\sequencebreak%
+  \RubikEmpty%
   \ShowSequence{}{\Rubik}{Rp,Up,R,D}
 }
 
@@ -726,7 +577,9 @@ $\rightarrow$%
     \DrawRubikFaceUpSide%
   }
 }{
-  \ShowSequence{}{\Rubik}{x,L,U,Rp,Up}\\[.2cm]
+  \Rubikxx%
+  \ShowSequence{}{\Rubik}{L,U,Rp,Up}\sequencebreak%
+  \RubikEmpty%
   \ShowSequence{}{\Rubik}{Lp,U,R,Up}
 }
 
@@ -746,8 +599,10 @@ $\rightarrow$%
 }{
   \RubikRR%
   \ShowSequence{}{\Rubik}{D,Rp}%
-  \RubikUU\\[.2cm]
-  \ShowSequence{}{\Rubik}{R,Dp,Rp}%
+  \RubikUU%
+  \ShowSequence{}{\Rubik}{R}\sequencebreak%
+  \RubikEmpty%
+  \ShowSequence{}{\Rubik}{Dp,Rp}%
   \RubikUU%
   \ShowSequence{}{\Rubik}{Rp}%
 }
@@ -804,8 +659,8 @@ Look at the corner pairs on each side seperately.
     \draw[double double arrow=4pt colored by white and black] (2.8,0.2) -- (0.2, 2.8);
   }
 }{
-  \ShowSequence{}{\Rubik}{F}
-  \ShowSequence{}{\Rubik}{R,Up,Rp,Up,R,U,Rp,Fp}\\[.2cm]
+  \ShowSequence{}{\Rubik}{F}%
+  \ShowSequence{}{\Rubik}{R,Up,Rp,Up,R,U,Rp,Fp}\sequencebreak%
   \RubikEmpty%
   \ShowSequence{}{\Rubik}{R,U,Rp,Up,Rp,F,R,Fp}
 }
@@ -835,9 +690,10 @@ Look at the corner pairs on each side seperately.
     \draw[double double arrow=4pt colored by white and black] (2.5, 2.8) -- (2.5, 0.2);
   }
 }{
-  \ShowSequence{}{\Rubik}{R,U,Rp,Up,Rp,F}\\[.2cm]
+  \ShowSequence{}{\Rubik}{R,U,Rp,Up,Rp,F}%
   \RubikRR%
-  \ShowSequence{}{\Rubik}{Up,Rp,Up,R,U,Rp,Fp}
+  \ShowSequence{}{\Rubik}{Up}\sequencebreak%
+  \ShowSequence{}{\Rubik}{Rp,Up,R,U,Rp,Fp}
 }
 
 \subsubsection*{Edges - One solved Edge}
@@ -867,7 +723,7 @@ Look at the corner pairs on each side seperately.
     \draw[double arrow=4pt colored by white and black] (0.2, 1.3) -- (1.3, 0.2);
   }
 }{
-  \ShowSequence{}{\Rubik}{R,Up,R,U,R,U}\RubikRR\\[.2cm]
+  \ShowSequence{}{\Rubik}{R,Up,R,U,R,U}\sequencebreak%
   \ShowSequence{}{\Rubik}{R,Up,Rp,Up}\RubikRR
 }
 
@@ -889,7 +745,7 @@ Look at the corner pairs on each side seperately.
   }
 }{
   \RubikRR%
-  \ShowSequence{}{\Rubik}{U,R,U,Rp,Up}\\[.2cm]
+  \ShowSequence{}{\Rubik}{U,R,U,Rp,Up}\sequencebreak%
   \ShowSequence{}{\Rubik}{Rp,Up,Rp,U,Rp}\\
 }
 
@@ -937,9 +793,6 @@ Look at the corner pairs on each side seperately.
   \RubikUU%
   \RubikMM%
 }
-
-
-
 
 \end{multicols*}
 \end{document}

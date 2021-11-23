@@ -1,0 +1,97 @@
+\usepackage[a4paper, margin=1cm, landscape]{geometry}
+\usepackage{multicol}
+\usepackage{tikz}%% load tikz BEFORE rubikcube
+\usepackage{rubikcube}
+\usepackage{tikz,rubikcube,rubikrotation,rubikpatterns}
+\usepackage{background}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+
+% set pdf attributes
+\usepackage[pdftex,
+pdftitle={Beginner CFOP Cheatsheet},
+pdfauthor={Pascal Huber},
+pdfkeywords={Rubik's Cube, Speedcube, Magic Cube, Puzzle Cube, Beginner, CFOP}
+]{hyperref}
+
+% No page numbers
+\thispagestyle{empty}
+
+% Double Arrows
+\tikzset{
+  double arrow/.style args={#1 colored by #2 and #3}{
+    -stealth,line width=#1,#2, % first arrow
+    postaction={draw,-stealth,#3,line width=(#1)/3,
+                shorten <=(#1)/3,shorten >=2*(#1)/3}, % second arrow
+  },
+  double double arrow/.style args={#1 colored by #2 and #3}{
+    stealth-stealth,line width=#1,#2, % first arrow
+    postaction={draw,stealth-stealth,#3,line width=(#1)/3,
+                shorten <=(#1)/1.5,shorten >=2*(#1)/3}, % second arrow
+  }
+}
+
+% Margin notes
+\SetBgContents{\color{Gray}\footnotesize created by Pascal Huber}
+\SetBgScale{1}
+\SetBgColor{black}
+\SetBgAngle{0}
+\SetBgOpacity{1}
+\SetBgPosition{current page.north east}
+\SetBgVshift{-.5cm}
+\SetBgHshift{-2cm}
+
+% Cube colors
+\colorlet{X}{black!60}
+
+% section fontenc
+\titleformat*{\section}
+{\LARGE\bfseries\sffamily\centering\color{OliveGreen}}
+\titleformat{\subsection}
+{\Large\bfseries\sffamily\color{BrickRed}}
+{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+\titleformat*{\subsubsection}
+{\large\bfseries\sffamily\color{BrickRed}}
+
+% section spacing
+% \titlespacing*{<command>}{<left>}{<before-sep>}{<after-sep>}
+\titlespacing*{\section}
+{0pt}{0pt}{0pt}
+\titlespacing*{\subsection}
+{0pt}{0pt}{0pt}
+\titlespacing*{\subsubsection}
+{0pt}{2pt}{0pt}
+
+% spacing and indentation
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\renewcommand{\baselinestretch}{1}
+
+% custom sizes
+\newcommand{\cubesize}{1.6cm}
+\newcommand{\cubescale}{0.35}
+\newcommand{\sequencebreak}{\\[.12cm]}
+
+% Side by side picture and sequence
+\newcommand*{\sbscube}[2]{%
+  \begin{minipage}[t]{0.29\linewidth}
+    \vspace{0pt}
+    {#1}
+  \end{minipage}\hfill%
+  \begin{minipage}[t]{0.69\linewidth}
+    \vspace{0pt}
+    {#2}\sequencebreak%
+  \end{minipage}
+}
+\newcommand*{\sbsface}[2]{%
+  \begin{minipage}[t]{0.22\linewidth}
+    \vspace{0pt}
+    {#1}
+  \end{minipage}\hfill%
+  \begin{minipage}[t]{0.76\linewidth}
+    \vspace{0pt}
+    {#2}
+  \end{minipage}
+}

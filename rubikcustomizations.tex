@@ -1,0 +1,118 @@
+%
+% Original file rubikcube.dtx
+%
+% Customizations:
+%  - \RubikRR: Sequence for R2
+%  - \RubikUU: Sequence for U2
+%  - \RubikMM: Sequence for M2
+%  - \Rubikxx: Sequence for x
+%  - \RubikBO: Open Bracket
+%  - \RubikBC: Close Bracket and repeat x times
+%  - \RubikEmpty: Phantom sequence for spacing
+
+% Settings
+\newcommand{\rubikfont}{\fontsize{10}{12pt}\usefont{T1}{cmss}{sbx}{n}}
+\pgfmathsetmacro{\sd}{0.25}    % a small horiz space
+\pgfmathsetmacro{\sdd}{2*\sd}  % 2x horiz space
+\pgfmathsetmacro{\sddd}{3*\sd} % 3x horiz space
+\pgfmathsetmacro{\sh}{0.6} % height
+\pgfmathsetmacro{\sb}{0.2} % base
+\pgfmathsetmacro{\sbh}{\sb + \sh} % UP
+\pgfmathsetmacro{\scx}{\sdd+0.2} % Start of CircleX arc
+\pgfmathsetmacro{\scy}{\sd*2/3}  % Start of CircleY arc
+\pgfmathsetmacro{\sqcx}{\scx-0.13} %% SQuare CenterX coord
+\pgfmathsetmacro{\sqcy}{\scy+0.25} %% SQuare CenterY cpprd
+
+% Squares
+\newcommand{\SquareRR}{%
+  \begin{tikzpicture}[scale=0.5]
+    \DrawNotationBox;
+    \draw [thick] (\sd, \sb) -- (\sd, \sbh);
+    \draw [thick] (\sdd,\sb) -- (\sdd, \sbh);
+    \draw [thick, ->] (\sddd, \sb) -- (\sddd, \sbh);
+    \draw [thick, ->] (\sddd, \sb) -- (\sddd, \sbh - 0.2);
+  \end{tikzpicture}%
+}
+\newcommand{\SquareUU}{%
+  \begin{tikzpicture}[scale=0.5]
+    \DrawNotationBox;
+    \draw [thick, <-] (\sb,\sddd) -- (\sbh, \sddd);
+    \draw [thick, <-] (\sb + 0.2,\sddd) -- (\sbh, \sddd);
+    \draw [thick]     (\sb,\sdd) --  (\sbh, \sdd);
+    \draw [thick]     (\sb,\sd) --   (\sbh, \sd);
+  \end{tikzpicture}%
+}
+\newcommand{\SquareMM}{%
+  \begin{tikzpicture}[scale=0.5]
+    \DrawNotationBox;
+    \draw [thick] (\sd, \sb) -- (\sd, \sbh);
+    \draw [thick, <-] (\sdd,\sb) -- (\sdd, \sbh);
+    \draw [thick, <-] (\sdd,\sb + 0.2) -- (\sdd, \sbh);
+    \draw [thick] (\sddd, \sb) -- (\sddd, \sbh);
+  \end{tikzpicture}%
+}
+\newcommand{\Squarexx}{%
+  \begin{tikzpicture}[scale=0.5]
+    \DrawNotationBox;
+    \draw [thick, ->] (\sd, \sb) -- (\sd, \sbh);
+    \draw [thick, ->] (\sdd,\sb) -- (\sdd, \sbh);
+    \draw [thick, ->] (\sddd, \sb) -- (\sddd, \sbh);
+  \end{tikzpicture}%
+}
+
+% Custom \Rubik commands
+\newcommand{\RubikRR}{%
+  {\rubikfont%
+    \begin{minipage}{0.6cm}
+      \centering%
+      \SquareRR\\
+      \rrR\textbf{2}%
+    \end{minipage}%%
+  }}
+\newcommand{\RubikUU}{%
+  {\rubikfont%
+    \begin{minipage}{0.6cm}
+      \centering%
+      \SquareUU\\
+      \rrU\textbf{2}%
+    \end{minipage}%%
+  }}
+\newcommand{\RubikMM}{%
+  {\rubikfont%
+    \begin{minipage}{0.6cm}
+      \centering%
+      \SquareMM\\
+      \rrM\textbf{2}%
+    \end{minipage}%%
+  }}
+\newcommand{\Rubikxx}{%
+  {\rubikfont%
+    \begin{minipage}{0.6cm}
+      \centering%
+      \Squarexx\\
+      \textbf{x}%
+    \end{minipage}%%
+  }}
+\newcommand{\RubikBO}{%
+  {\rubikfont%
+    \begin{minipage}{0.25cm}
+      \centering%
+      \textbf{\Large(}%
+    \end{minipage}%
+  }}
+\newcommand{\RubikBC}[1]{%
+  {\rubikfont%
+    \begin{minipage}{0.5cm}
+      \centering%
+      \textbf{\Large){#1}}%
+    \end{minipage}%
+  }}
+\newcommand{\RubikEmpty}{%
+  {\rubikfont%
+    \begin{minipage}{0.6cm}
+      \phantom{
+        \SquareM\\
+        \rrM%
+      }
+    \end{minipage}%
+  }}
