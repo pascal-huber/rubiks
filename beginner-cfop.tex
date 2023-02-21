@@ -7,12 +7,17 @@
 
 % Sidebar dimensions
 \RubikSidebarSep{0.2}
-\RubikSidebarWidth{.6}
-\RubikSidebarLength{.8}
+\RubikSidebarWidth{.4}
+\RubikSidebarLength{1.0}
 
 \begin{multicols*}{4}
 \section*{Beginner CFOP Cheatsheet}
-Sunny side up unless instructed otherwise.
+
+\begin{itemize}
+  \item Sunny side up unless instructed otherwise.
+  \item Solve the white cross first (no instructions).
+\end{itemize}
+
 \subsection*{F2L}
 
 \noindent%
@@ -59,130 +64,128 @@ $\rightarrow$%
 {G}{G}{G}%
 \ShowCube{\cubesize}{\cubescale}{\DrawRubikCubeRD}
 
-We first move the corresponding corner and edge pieces to the top layer and make
-sure they are in a correct position for one of the insertion algorithms.
 
-\subsubsection*{Pair to Top Layer}
 
-Choose a corner and move it to the top layer together with its edge without
-messing up the white cross or already solved corners.
+% Move the corresponding corner and edge
+% pieces to the top layer and make sure they are in a correct position for one of
+% the insertion algorithms.
 
-If the two pieces are next to each other but in a messed up way, split them up
-first as in the following example. Make sure to not break an already solved
-part.
+\subsubsection*{Move Corner and Edge to Top Layer}
 
-\RubikFaceUp
-{X}{X}{X}
-{X}{X}{X}
-{X}{G}{W}%
-\RubikFaceRight
-{G}{X}{X}
-{X}{O}{X}
-{X}{X}{X}%
-\RubikFaceFront
-{X}{O}{O}
-{X}{G}{X}
-{X}{X}{X}%
-\ShowCube{\cubesize}{\cubescale}{\DrawRubikCubeRU}%
-\RubikRotation{\fourspot}%
-\ShowSequence{}{\Rubik}{Rp,U,R}%
-\RubikFaceUp
-{X}{X}{X}
-{G}{X}{X}
-{X}{X}{W}%
-\RubikFaceRight
-{G}{X}{X}
-{X}{O}{X}
-{X}{X}{X}%
-\RubikFaceFront
-{X}{X}{O}
-{X}{G}{X}
-{X}{X}{X}%
-\ShowCube{\cubesize}{\cubescale}{\DrawRubikCubeRU}%
+\setlength\topsep{0pt}
+\begin{itemize}
+  \item Choose the next white corner and move it to the top layer together with
+  its edge.
+  \item If the two pieces are next to each other but in a messed up way, split
+  them up first as in the following example.\\[.2cm]
+  \RubikFaceUp%
+  {X}{X}{X}
+  {X}{X}{X}
+  {X}{G}{W}%
+  \RubikFaceRight%
+  {G}{X}{X}
+  {X}{O}{X}
+  {X}{X}{X}%
+  \RubikFaceFront%
+  {X}{O}{O}
+  {X}{G}{X}
+  {X}{X}{X}%
+  \ShowCube{\cubesize}{\cubescale}{\DrawRubikCubeRU}%
+  \RubikRotation{\fourspot}%
+  \ShowSequence{}{\Rubik}{Rp,U,R}%
+  \RubikFaceUp%
+  {X}{X}{X}
+  {G}{X}{X}
+  {X}{X}{W}%
+  \RubikFaceRight%
+  {G}{X}{X}
+  {X}{O}{X}
+  {X}{X}{X}%
+  \RubikFaceFront%
+  {X}{X}{O}
+  {X}{G}{X}
+  {X}{X}{X}%
+  \ShowCube{\cubesize}{\cubescale}{\DrawRubikCubeRU}\\
+  \item Try not to not break an already solved part.
+\end{itemize}
 
-\subsubsection*{Position the Pair}
+\subsubsection*{Prepare Insertion}
 
-If the white face of the corner piece is not on the top, move it above the place
-it has to go into. Then turn the top layer once such that you can still see the
-white face of the corner piece.
-
-If both the top sides of the corner and edge pieces are the same color, we move
-them next to each other.
-
-\RubikFaceUp
-{X}{O}{X}
-{X}{X}{X}
-{O}{X}{X}%
-\RubikFaceRight
-{X}{X}{X}
-{X}{O}{X}
-{X}{X}{X}%
-\RubikFaceFront
-{W}{X}{X}
-{X}{G}{X}
-{X}{X}{X}%
-\ShowCube{\cubesize}{\cubescale}{\DrawRubikCubeRU}%
-\RubikRotation{\fourspot}%
-\ShowSequence{}{\Rubik}{Fp,Up,F}%
-\RubikFaceUp
-{X}{X}{X}
-{O}{X}{X}
-{O}{X}{X}%
-\RubikFaceRight
-{X}{X}{X}
-{X}{O}{X}
-{X}{X}{X}%
-\RubikFaceFront
-{W}{X}{X}
-{X}{G}{X}
-{X}{X}{X}%
-\ShowCube{\cubesize}{\cubescale}{\DrawRubikCubeRU}
-
-Otherwise we want the edge to be on the opposite side, in the layer parallel to
-the white face of the corner.
-
-\RubikFaceUp
-{X}{G}{X}
-{X}{X}{X}
-{O}{X}{X}%
-\RubikFaceRight
-{X}{X}{X}
-{X}{O}{X}
-{X}{X}{X}%
-\RubikFaceFront
-{W}{X}{X}
-{X}{G}{X}
-{X}{X}{X}%
-\ShowCube{\cubesize}{\cubescale}{\DrawRubikCubeRU}%
-\RubikRotation{\fourspot}%
-\ShowSequence{}{\Rubik}{Fp,U,F}%
-\RubikFaceUp
-{X}{X}{X}
-{X}{X}{G}
-{O}{X}{X}%
-\RubikFaceRight
-{X}{O}{X}
-{X}{O}{X}
-{X}{X}{X}%
-\RubikFaceFront
-{W}{X}{X}
-{X}{G}{X}
-{X}{X}{X}%
-\ShowCube{\cubesize}{\cubescale}{\DrawRubikCubeRU}\\[.3cm]
-
-If the corner's white face is facing up, turn the upper layer until the edge
+\begin{itemize}
+  \item Position the corner piece above the place it has to go into and turn the
+        top layer once such that its white face is still visible.
+  \item If both the top sides of the corner and edge pieces are the same color,
+        we move them next to each other.\\[.2cm]
+        \RubikFaceUp%
+        {X}{O}{X}
+        {X}{X}{X}
+        {O}{X}{X}%
+        \RubikFaceRight%
+        {X}{X}{X}
+        {X}{O}{X}
+        {X}{X}{X}%
+        \RubikFaceFront%
+        {W}{X}{X}
+        {X}{G}{X}
+        {X}{X}{X}%
+        \ShowCube{\cubesize}{\cubescale}{\DrawRubikCubeRU}%
+        \RubikRotation{\fourspot}%
+        \ShowSequence{}{\Rubik}{Fp,Up,F}%
+        \RubikFaceUp
+        {X}{X}{X}
+        {O}{X}{X}
+        {O}{X}{X}%
+        \RubikFaceRight%
+        {X}{X}{X}
+        {X}{O}{X}
+        {X}{X}{X}%
+        \RubikFaceFront%
+        {W}{X}{X}
+        {X}{G}{X}
+        {X}{X}{X}%
+        \ShowCube{\cubesize}{\cubescale}{\DrawRubikCubeRU}\\
+        \item Otherwise we want the edge to be on the opposite side, in the layer
+        parallel to the white face of the corner.\\[.2cm]
+        \RubikFaceUp%
+        {X}{G}{X}
+        {X}{X}{X}
+        {O}{X}{X}%
+        \RubikFaceRight%
+        {X}{X}{X}
+        {X}{O}{X}
+        {X}{X}{X}%
+        \RubikFaceFront%
+        {W}{X}{X}
+        {X}{G}{X}
+        {X}{X}{X}%
+        \ShowCube{\cubesize}{\cubescale}{\DrawRubikCubeRU}%
+        \RubikRotation{\fourspot}%
+        \ShowSequence{}{\Rubik}{Fp,U,F}%
+        \RubikFaceUp%
+        {X}{X}{X}
+        {X}{X}{G}
+        {O}{X}{X}%
+        \RubikFaceRight%
+        {X}{O}{X}
+        {X}{O}{X}
+        {X}{X}{X}%
+        \RubikFaceFront%
+        {W}{X}{X}
+        {X}{G}{X}
+        {X}{X}{X}%
+        \ShowCube{\cubesize}{\cubescale}{\DrawRubikCubeRU}\\[.3cm]
+  \item If the corner's white face is facing up, turn the upper layer until the edge
 matches the center. Then turn the side with it ``away'' and move
-the corner above it and turn back the side.
-
-\RubikFaceUp
+the corner above it and turn back the side.\\[.2cm]
+\RubikFaceUp%
 {X}{X}{W}
 {X}{X}{X}
 {X}{O}{X}%
-\RubikFaceRight
+\RubikFaceRight%
 {X}{X}{O}
 {X}{O}{X}
 {X}{X}{X}%
-\RubikFaceFront
+\RubikFaceFront%
 {X}{G}{X}
 {X}{G}{X}
 {X}{X}{X}%
@@ -191,29 +194,28 @@ the corner above it and turn back the side.
 \ShowSequence{}{\Rubik}{Fp}%
 \RubikUU%
 \ShowSequence{}{\Rubik}{F}%
-\RubikFaceUp
+\RubikFaceUp%
 {X}{X}{X}
 {X}{X}{X}
 {X}{O}{O}%
-\RubikFaceRight
+\RubikFaceRight%
 {W}{X}{X}
 {X}{O}{X}
 {X}{X}{X}%
-\RubikFaceFront
+\RubikFaceFront%
 {X}{G}{G}
 {X}{G}{X}
 {X}{X}{X}%
 \ShowCube{\cubesize}{\cubescale}{\DrawRubikCubeRU}
+\end{itemize}
 
 \subsubsection*{Inserting Algorithms}
-
-It should now be possible to use one of the algorithms to finish the corner.
 
 % Algorithm 1
 \noindent%
 \RubikFaceUp
 {X}{X}{X}
-{X}{Y}{X}
+{X}{X}{X}
 {G}{G}{X}%
 \RubikFaceRight
 {X}{X}{X}
@@ -227,7 +229,7 @@ It should now be possible to use one of the algorithms to finish the corner.
 \ShowSequence{}{\Rubik}{R,Up,Rp}%
 \RubikFaceUp
 {X}{X}{X}
-{X}{Y}{X}
+{X}{X}{X}
 {X}{X}{X}%
 \RubikFaceRight
 {X}{X}{X}
@@ -391,7 +393,11 @@ $\rightarrow$%
 {G}{G}{G}%
 \ShowCube{\cubesize}{\cubescale}{\DrawRubikCube}
 
-\subsubsection*{Edges}
+\subsubsection*{Yellow Cross}
+
+\begin{itemize}
+   \item Use one or multiple of the following algorithms to get the yellow cross.
+\end{itemize}
 
 \RubikCubeGreyAll
 \noindent
@@ -409,18 +415,6 @@ $\rightarrow$%
 \noindent
 \RubikFaceUp
 {X}{X}{X}
-{X}{Y}{Y}
-{X}{Y}{X}%
-\sbsface{
-  \ShowCube{\cubesize}{\cubescale}{\DrawRubikFaceUp}%
-}{
-  \ShowSequence{}{\Rubik}{Fw,R,U,Rp,Up,Fwp}
-}
-
-\RubikCubeGreyAll
-\noindent
-\RubikFaceUp
-{X}{X}{X}
 {Y}{Y}{Y}
 {X}{X}{X}%
 \sbsface{
@@ -429,54 +423,74 @@ $\rightarrow$%
   \ShowSequence{}{\Rubik}{F,R,U,Rp,Up,Fp}
 }
 
+\RubikCubeGreyAll
+\noindent
+\RubikFaceUp
+{X}{X}{X}
+{X}{Y}{Y}
+{X}{Y}{X}%
+\sbsface{
+  \ShowCube{\cubesize}{\cubescale}{\DrawRubikFaceUp}%
+}{
+  \ShowSequence{}{\Rubik}{Fw,R,U,Rp,Up,Fwp}
+}
+
+\begin{tikzpicture}[overlay]
+  \begin{scope}[xshift=0.5cm]
+    \node [anchor=west] (note) at (2,0) {\augiefamily\footnotesize Turn the two front layers};
+    \draw [-latex, ultra thick, black] (note) to[out=180, in=-50] (1.48,0.2);
+    % \draw [-latex, ultra thick, black] (3.6,0.1) to[out=40, in=-150] (4.05,0.25);
+  \end{scope}
+\end{tikzpicture}%
+
 \subsubsection*{Corners - No matching Corners}
 
-\noindent
-\RubikFaceBack
+\RubikFaceBack%
 {Y}{X}{Y}
 {X}{X}{X}
 {X}{X}{X}%
-\RubikFaceUp
+\RubikFaceUp%
 {X}{Y}{X}
 {Y}{Y}{Y}
 {X}{Y}{X}%
-\RubikFaceFront
+\RubikFaceFront%
 {Y}{X}{Y}
 {X}{X}{X}
-{X}{X}{X}%
+{X}{X}{X}
+\hspace{.2pt}
 \sbscube{
-  \ShowCube{\cubesize}{\cubescale}{
+  \ShowCube{\cubesize}{\cubescale}{%
+    \NoSidebar{X}%
     \DrawRubikFaceUpSide%
-  }
+  }%
 }{
-  % \RubikRotation{[threeF], F}%
   \ShowSequence{}{\Rubik}{F}%
   \RubikBO%
   \ShowSequence{}{\Rubik}{R,U,Rp,Up}%
   \RubikBC{3}%
-  \ShowSequence{}{\Rubik}{Fp}%
+  \ShowSequence{}{\Rubik}{Fp}
 }
-
 
 \RubikCubeGreyAll%
 \RubikFaceBack%
 {Y}{X}{X}
 {X}{X}{X}
-{X}{X}{X}
+{X}{X}{X}%
 \RubikFaceLeft%
 {Y}{X}{Y}
 {X}{X}{X}
-{X}{X}{X}
+{X}{X}{X}%
 \RubikFaceUp%
 {X}{Y}{X}
 {Y}{Y}{Y}
-{X}{Y}{X}
+{X}{Y}{X}%
 \RubikFaceFront%
 {X}{X}{Y}
 {X}{X}{X}
 {X}{X}{X}
 \sbscube{
   \ShowCube{\cubesize}{\cubescale}{
+    \NoSidebar{X}%
     \DrawRubikFaceUpSide%
   }
 }{
@@ -503,6 +517,8 @@ $\rightarrow$%
 {X}{X}{X}
 \sbscube{
   \ShowCube{\cubesize}{\cubescale}{
+    \hspace{.1cm}
+    \NoSidebar{X}%
     \DrawRubikFaceUpSide%
   }
 }{
@@ -523,6 +539,8 @@ $\rightarrow$%
 {X}{X}{X}
 \sbscube{
   \ShowCube{\cubesize}{\cubescale}{
+    \hspace{.1cm}
+    \NoSidebar{X}%
     \DrawRubikFaceUpSide%
   }
 }{
@@ -549,6 +567,8 @@ $\rightarrow$%
 {X}{X}{X}
 \sbscube{
   \ShowCube{\cubesize}{\cubescale}{
+    \hspace{.2cm}
+    \NoSidebar{X}%
     \DrawRubikFaceUpSide%
   }
 }{
@@ -573,6 +593,8 @@ $\rightarrow$%
 {X}{X}{X}
 \sbscube{
   \ShowCube{\cubesize}{\cubescale}{
+    \hspace{.1cm}
+    \NoSidebar{X}%
     \DrawRubikFaceUpSide%
   }
 }{
@@ -593,6 +615,8 @@ $\rightarrow$%
 {X}{X}{X}
 \sbscube{
   \ShowCube{\cubesize}{\cubescale}{
+    \hspace{.1cm}
+    \NoSidebar{X}%
     \DrawRubikFaceUpSide%
   }
 }{
@@ -652,9 +676,14 @@ $\rightarrow$%
 {G}{G}{G}%
 \ShowCube{\cubesize}{\cubescale}{\DrawRubikCube}
 
-Look at the corner pairs on each side seperately.
 
-\subsubsection*{Corners - Diagonal Corner Swap}
+
+\begin{itemize}
+  \item Turn the top layer and cube for a corner algorithm before putting the
+        edges in place.
+\end{itemize}
+
+\subsubsection*{Corners}
 
 \RubikCubeGreyAll%
 \RubikFaceUp%
@@ -673,7 +702,28 @@ Look at the corner pairs on each side seperately.
   \ShowSequence{}{\Rubik}{R,U,Rp,Up,Rp,F,R,Fp}
 }
 
-\subsubsection*{Corners - Headlights}
+\begin{tikzpicture}[overlay]
+  \begin{scope}[xshift=0.0cm, yshift=.5cm]
+    \node [anchor=west] (note) at (0,0) {\augiefamily\footnotesize Headlights};
+    \draw [-latex, ultra thick, black] (note) to[out=180, in=180] (0.1,-0.9);
+    \draw [-latex, ultra thick, black] (note) to[out=180, in=180] (0.1,-1.6);
+
+    % % circle
+    % \fill[top color=yellow!50,bottom color=yellow!50,middle
+    % color=yellow!50,shading=axis,opacity=1] (0,0) circle[x radius=2,y radius=0.5];
+    % \pgfmathsetmacro{\alphacrit}{acos(1/12)}
+
+    % % cone
+    % \draw[left color=orange,right color=orange!50,middle
+    % color=orange!50,shading=axis,fill opacity=0.25] (90-\alphacrit:2 and 0.5) --
+    % (0,6) -- (90+\alphacrit:2 and 0.5)
+    % arc[start angle=90+\alphacrit,end angle=450-\alphacrit,x radius=2,y radius=0.5];
+
+  \end{scope}
+\end{tikzpicture}%
+\vspace{-.5cm}
+
+
 
 \RubikCubeGreyAll%
 \RubikFaceBack%
@@ -694,6 +744,7 @@ Look at the corner pairs on each side seperately.
 {Y}{Y}{Y}
 \sbscube{
   \ShowCube{\cubesize}{\cubescale}{
+    \NoSidebar{X}%
     \DrawRubikFaceUpSide%
     \draw[double double arrow=4pt colored by white and black] (2.5, 2.8) -- (2.5, 0.2);
   }
@@ -704,7 +755,7 @@ Look at the corner pairs on each side seperately.
   \ShowSequence{}{\Rubik}{Rp,Up,R,U,Rp,Fp}
 }
 
-\subsubsection*{Edges - One solved Edge}
+\subsubsection*{Edges}
 
 \RubikCubeGreyAll%
 \RubikFaceBack%
@@ -755,9 +806,7 @@ Look at the corner pairs on each side seperately.
   \RubikRR%
   \ShowSequence{}{\Rubik}{U,R,U,Rp,Up}\sequencebreak%
   \ShowSequence{}{\Rubik}{Rp,Up,Rp,U,Rp}\\
-}
-
-\subsubsection*{Edges - No solved Edge}
+}%
 
 \RubikCubeGreyAll%
 \RubikFaceUp%
@@ -777,7 +826,7 @@ Look at the corner pairs on each side seperately.
   \RubikUU%
   \RubikMM%
   \ShowSequence{}{\Rubik}{Up}%
-  \RubikMM
+  \RubikMM%
 }
 
 \RubikCubeGreyAll%
@@ -796,9 +845,14 @@ Look at the corner pairs on each side seperately.
   \RubikMM%
   \ShowSequence{}{\Rubik}{Up}%
   \RubikMM%
-  \ShowSequence{}{\Rubik}{Up,Mp}%
+  \ShowSequence{}{\Rubik}{Up}%
+  \sequencebreak%
+  \RubikEmpty%
+  \RubikEmpty%
+  \ShowSequence{}{\Rubik}{Mp}%
   \RubikUU%
   \RubikMM%
+  \ShowSequence{}{\Rubik}{U}%
 }
 
 \end{multicols*}

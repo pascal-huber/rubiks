@@ -1,4 +1,4 @@
-\usepackage[a4paper, margin=1cm, landscape]{geometry}
+\usepackage[a4paper, margin=1cm, bmargin=.7cm, landscape, includefoot]{geometry}
 \usepackage{multicol}
 \usepackage{tikz}%% load tikz BEFORE rubikcube
 \usepackage{rubikcube}
@@ -7,8 +7,20 @@
 \usepackage{tabularx}
 \usepackage{titlesec}
 \usepackage[T1]{fontenc}
+\DeclareRobustCommand{\augiefamily}{%
+  \fontfamily{augie}\fontseries{m}\fontshape{n}\selectfont}
+\DeclareTextFontCommand{\textaugie}{\augiefamily}
 \usepackage{xcolor}
-\usepackage[grumpy,mark]{gitinfo2}
+
+% 3d for rotating cube
+%
+% \usepackage[active,tightpage]{preview}
+% \usepackage{tikz-3dplot}
+% \usetikzlibrary{3d}
+
+% compact itemize
+\usepackage{enumitem}
+\setitemize{noitemsep,leftmargin=*,topsep=0pt,parsep=0pt,partopsep=0pt,label={--}}
 
 % set pdf attributes
 \usepackage[pdftex,
@@ -17,17 +29,24 @@ pdfauthor={Pascal Huber},
 pdfkeywords={Rubik's Cube, Speedcube, Magic Cube, Puzzle Cube, Beginner, CFOP}
 ]{hyperref}
 
+% Add footer with git version
+\usepackage{gitver}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\color{gray}{\footnotesize\gitVer}}
+
 % No page numbers
-\thispagestyle{empty}
+% \thispagestyle{empty}
 
 % Git info watermark
 % TODO: is there a nicer solution to add the git tag and commimt hash?
 %  - The package gitinfo2 seems badly maintained and has some issues.
-\renewcommand{\gitMark}{\centering%
-  \ifthenelse{\equal{\gitTags}{\string (None)}}
-  {\gitAbbrevHash}
-  {\StrGobbleRight{\gitTags}{1}}%
-}
+% \renewcommand{\gitMark}{\centering%
+%   \ifthenelse{\equal{\gitTags}{\string (None)}}
+%   {\gitAbbrevHash}
+%   {\StrGobbleRight{\gitTags}{1}}%
+% }
 
 % Double Arrows
 \tikzset{
@@ -44,7 +63,10 @@ pdfkeywords={Rubik's Cube, Speedcube, Magic Cube, Puzzle Cube, Beginner, CFOP}
 }
 
 % Cube colors
-\colorlet{X}{black!60}
+\colorlet{X}{black!50}
+
+% Cube lines
+\tikzset{ultra thick/.style={line width=0.6pt}}%
 
 % section fontenc
 \titleformat*{\section}
@@ -95,6 +117,7 @@ pdfkeywords={Rubik's Cube, Speedcube, Magic Cube, Puzzle Cube, Beginner, CFOP}
     {#2}
   \end{minipage}
 }
+
 
 %%% Local Variables:
 %%% mode: latex
