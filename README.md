@@ -1,3 +1,11 @@
 # Rubik's Cube Cheatsheet
 
-My cheatsheet to solve a Rubik's cube using the "Beginner CFOP Method".
+## Local setup
+
+``` shell
+cp bin/gitinfo .git/hooks/post-checkout
+cp bin/gitinfo .git/hooks/post-commit
+cp bin/gitinfo .git/hooks/post-merge
+git checkout master
+```
+
